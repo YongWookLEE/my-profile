@@ -13,7 +13,7 @@ export default function Hero({ profile }: HeroProps) {
           <div className="flex justify-center">
             <div className="relative">
               <img
-                src="/profile.jpg"
+                src={`${import.meta.env.BASE_URL}profile.jpg`}
                 alt={profile.name}
                 className="w-56 h-72 rounded-lg object-cover shadow-lg border border-gray-200"
               />
