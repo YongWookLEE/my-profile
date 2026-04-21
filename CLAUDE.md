@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 언어 및 커뮤니케이션 규칙
+- **기본 응답 언어:** 한국어
+- **코드 주석 및 문서:** 한국어
+- **커밋 메시지:** 한국어
+- **PR 코멘트:** 한국어
+- **PR 리뷰:** 한국어
+- **PR 템플릿:** 한국어
+- **문서화:** 한국어
+- **변수명/함수명:** 영어
+
 ## Project Overview
 
 **My Profile Site** is a portfolio website built for Lee Yong-wook (이용욱), a fullstack developer with 4+ years of experience. The site showcases professional expertise, project history, technical skills, and contact information with a focus on geospatial and backend development experience.
