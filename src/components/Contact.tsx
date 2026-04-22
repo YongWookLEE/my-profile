@@ -1,4 +1,5 @@
 import { Contact as ContactType } from '../types'
+import SectionWrapper from './common/SectionWrapper'
 
 interface ContactProps {
   contact: ContactType
@@ -43,40 +44,34 @@ export default function Contact({ contact }: ContactProps) {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-gray-600">
-            연락처를 통해 언제든지 연락주세요
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {contactItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              target={item.label === 'GitHub' ? '_blank' : undefined}
-              rel={item.label === 'GitHub' ? 'noopener noreferrer' : undefined}
-              className={`group p-8 rounded-lg border-2 border-gray-200 transition-all duration-200 ${item.color}`}
-            >
-              <div className="mb-4">{item.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-current">
-                {item.label}
-              </h3>
-              <p className="text-gray-600 group-hover:text-current break-all">
-                {item.value}
-              </p>
-              <div className="mt-4 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                {item.label === 'GitHub' ? 'Visit Profile →' : 'Contact Now →'}
-              </div>
-            </a>
-          ))}
-        </div>
+    <SectionWrapper
+      id="contact"
+      title="Get In Touch"
+      subtitle="연락처를 통해 언제든지 연락주세요"
+      background="white"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {contactItems.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            target={item.label === 'GitHub' ? '_blank' : undefined}
+            rel={item.label === 'GitHub' ? 'noopener noreferrer' : undefined}
+            className={`group p-8 rounded-lg border-2 border-gray-200 transition-all duration-200 ${item.color}`}
+          >
+            <div className="mb-4">{item.icon}</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-current">
+              {item.label}
+            </h3>
+            <p className="text-gray-600 group-hover:text-current break-all">
+              {item.value}
+            </p>
+            <div className="mt-4 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+              {item.label === 'GitHub' ? 'Visit Profile →' : 'Contact Now →'}
+            </div>
+          </a>
+        ))}
       </div>
-    </section>
+    </SectionWrapper>
   )
 }
