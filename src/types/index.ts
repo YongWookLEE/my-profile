@@ -34,4 +34,6 @@ export interface Project {
   description: string;
   achievements: string[];
   tags: string[];
+  category?: string; // 'web' | 'gis' | 'infra' 등
+  url?: string;      // 프로젝트 링크
 }

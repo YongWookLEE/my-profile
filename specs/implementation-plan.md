@@ -39,10 +39,15 @@ my-profile-site/
 │   └── hero-resize.md         # Hero 섹션 축소 스펙
 ├── src/
 │   ├── components/
+│   │   ├── common/
+│   │   │   └── SectionWrapper.tsx  # 섹션 공통 래퍼 컴포넌트 (v1.4 추가)
 │   │   ├── Hero.tsx           # 프로필 소개 섹션
-│   │   ├── Projects.tsx       # 타임라인 프로젝트 섹션
+│   │   ├── Projects.tsx       # 타임라인 프로젝트 섹션 (필터링/페이지네이션 포함)
 │   │   ├── Skills.tsx         # 기술스택 섹션
 │   │   └── Contact.tsx        # 연락처 섹션
+│   ├── constants/
+│   │   ├── navigation.ts      # 네비게이션 상수 (v1.4 추가)
+│   │   └── skillColors.ts     # Skills 색상 매핑 상수 (v1.4 추가)
 │   ├── data/
 │   │   ├── profile.json       # 프로필 정보
 │   │   └── projects.json      # 프로젝트 상세
@@ -214,7 +219,7 @@ interface Period {
   end: string;
 }
 
-// Project
+// Project (v1.4: category?, url? 추가)
 interface Project {
   id: number;
   title: string;
@@ -223,6 +228,8 @@ interface Project {
   description: string;
   achievements: string[];
   tags: string[];
+  category?: string; // 'web' | 'gis' | 'infra' 등 (선택)
+  url?: string;      // 프로젝트 링크 (선택)
 }
 ```
 
@@ -245,6 +252,21 @@ interface Project {
 - [x] **Contact.tsx** — 이메일/전화/GitHub 카드
 - [x] **App.tsx** — 섹션 조합, 네비게이션, 푸터
 - [x] **index.css** — Tailwind 글로벌 스타일
+
+### 아키텍처 개선 (v1.4)
+- [x] **SectionWrapper.tsx** — 섹션 공통 래퍼 컴포넌트 추출 (Projects, Skills, Contact 적용)
+- [x] **constants/navigation.ts** — 네비게이션 항목 상수 분리
+- [x] **constants/skillColors.ts** — Skills 색상 매핑 상수 분리 (`keyof TechStack` 타입 안전성)
+- [x] **App.tsx** — `useState` 제거 (정적 데이터 모듈 레벨 상수로 전환), 저작권 연도 동적화
+- [x] **types/index.ts** — Project 인터페이스에 `category?`, `url?` 옵셔널 필드 추가
+
+### Projects 확장성 개선 (v1.4)
+- [x] **정렬 로직** — `parsePeriod()` YYYYMM 정수 비교로 월 단위 정확 정렬
+- [x] **태그 필터링** — 전체/태그 버튼 UI, 동일 태그 재클릭 시 토글 해제
+- [x] **더보기 페이지네이션** — 초기 4개 표시, 4개씩 추가 로드, 필터 변경 시 초기화
+- [x] **모바일 타임라인** — 숨김 → 좌측 도트+수직선 방식으로 개선
+- [x] **카드 태그 클릭** — 카드 내 태그 클릭 시 필터 연동
+- [x] **프로젝트 링크** — `url` 필드 있을 때 "프로젝트 보기 →" 링크 표시
 
 ### 스타일링 및 반응형
 - [x] 라이트 모드 컬러 스킴
@@ -307,6 +329,7 @@ npm run preview
 | v1.1 | 2024 | Hero 섹션 축소 |
 | v1.2 | 2026-04-16 | 프로필 사진 실제 이미지 적용 (public/profile.jpg) |
 | v1.3 | 2026-04-16 | 프로필 사진 영역 확대 (192px → 224×288px) + 회색 테두리 추가 |
+| v1.4 | 2026-04-22 | 아키텍처 개선 (SectionWrapper, constants 분리, App useState 제거) + Projects 확장성 개선 (태그 필터링, 더보기 페이지네이션, 모바일 타임라인) |
 
 ---
 
