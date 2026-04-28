@@ -15,13 +15,19 @@
 my-profile-site/
 ├── specs/              # 요구사항 문서
 │   ├── prd.md         # 프로덕트 요구사항
-│   └── trd.md         # 기술 요구사항
+│   ├── trd.md         # 기술 요구사항
+│   └── implementation-plan.md # 구현 계획 및 변경 이력
 ├── src/
 │   ├── components/    # React 컴포넌트
+│   │   ├── common/
+│   │   │   └── SectionWrapper.tsx # 섹션 공통 래퍼
 │   │   ├── Hero.tsx           # 프로필 소개 섹션
 │   │   ├── Projects.tsx       # 타임라인 프로젝트 섹션
 │   │   ├── Skills.tsx         # 기술스택 섹션
 │   │   └── Contact.tsx        # 연락처 섹션
+│   ├── constants/     # 상수 정의
+│   │   ├── navigation.ts      # 네비게이션 항목
+│   │   └── skillColors.ts     # Skills 색상 매핑
 │   ├── data/          # 정적 JSON 데이터
 │   │   ├── profile.json       # 프로필 정보
 │   │   └── projects.json      # 프로젝트 상세 데이터
@@ -73,9 +79,11 @@ npm run preview
 ### 프로젝트 정보 수정
 `src/data/projects.json` 파일에서 프로젝트 정보를 수정할 수 있습니다:
 - 프로젝트명, 역할
-- 기간
+- 기간 (`YYYY.MM` 형식, 최신순 자동 정렬)
 - 설명, 성과
-- 기술 태그
+- 기술 태그 (태그 필터링에 자동 반영)
+- `url`: 프로젝트 링크 (선택, 있으면 카드에 링크 표시)
+- `category`: 분류 (선택, 예: `'web'`, `'gis'`, `'infra'`)
 
 ## 🎨 섹션 설명
 
@@ -85,9 +93,11 @@ npm run preview
 - 이메일 / GitHub 버튼
 
 ### Projects Section
-- 시간순 타임라인 레이아웃
+- 시간순 타임라인 레이아웃 (년+월 기준 자동 정렬)
 - 데스크탑: 좌우 교차 배치
-- 모바일: 단일 스택
+- 모바일: 좌측 도트 타임라인
+- 태그 필터링: 기술 태그 클릭으로 프로젝트 필터링
+- 더보기: 초기 4개 표시 후 4개씩 추가 로드
 
 ### Skills Section
 - 카테고리별 기술 뱃지
@@ -105,18 +115,9 @@ npm run preview
 - ✅ Tailwind CSS로 일관된 스타일링
 - ✅ 정적 JSON 데이터 (DB 불필요)
 - ✅ SEO 최적화 (메타태그)
-
-## 🔄 GitHub URL 설정
-
-프로필 정보의 GitHub URL을 실제 GitHub 주소로 수정하세요:
-```json
-// src/data/profile.json
-{
-  "contact": {
-    "github": "https://github.com/yourusername"
-  }
-}
-```
+- ✅ 태그 기반 프로젝트 필터링
+- ✅ 더보기 페이지네이션 (UX 최적화)
+- ✅ SectionWrapper 공통 컴포넌트로 일관된 섹션 구조
 
 ## 📱 브라우저 호환성
 
