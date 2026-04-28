@@ -119,18 +119,6 @@ npm run preview
 - ✅ 더보기 페이지네이션 (UX 최적화)
 - ✅ SectionWrapper 공통 컴포넌트로 일관된 섹션 구조
 
-## 🔄 GitHub URL 설정
-
-프로필 정보의 GitHub URL을 실제 GitHub 주소로 수정하세요:
-```json
-// src/data/profile.json
-{
-  "contact": {
-    "github": "https://github.com/yourusername"
-  }
-}
-```
-
 ## 📱 브라우저 호환성
 
 - Chrome (최신)

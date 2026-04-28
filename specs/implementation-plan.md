@@ -32,6 +32,8 @@
 
 ```
 my-profile-site/
+├── .codex/
+│   └── rules.md             # Codex 전용 작업 규칙
 ├── specs/                     # 프로젝트 문서
 │   ├── prd.md                # 제품 요구사항
 │   ├── trd.md                # 기술 요구사항
@@ -63,6 +65,7 @@ my-profile-site/
 ├── tailwind.config.ts
 ├── postcss.config.js
 ├── .gitignore
+├── AGENTS.md
 └── README.md
 ```
 
@@ -280,6 +283,12 @@ interface Project {
 - [x] 번들 크기 최적화 (JS 50.58kB gzip)
 - [x] 정적 빌드 확인
 
+### 개발 규칙 정리 (v1.4.1)
+- [x] **.codex/rules.md** — Codex 전용 작업 규칙 문서 분리
+- [x] **AGENTS.md** — Codex 규칙 문서 참조 추가
+- [x] **tsconfig.node.json** — `vite.config.ts` 선언 파일 출력 경로를 `.cache`로 분리해 `vite.config.js` 재생성 방지
+- [x] **.gitignore** — `*.tsbuildinfo`, `.cache` 무시 규칙 추가 및 빌드 산출물 추적 정리
+
 ---
 
 ## 추가 작업 (선택)
@@ -330,6 +339,7 @@ npm run preview
 | v1.2 | 2026-04-16 | 프로필 사진 실제 이미지 적용 (public/profile.jpg) |
 | v1.3 | 2026-04-16 | 프로필 사진 영역 확대 (192px → 224×288px) + 회색 테두리 추가 |
 | v1.4 | 2026-04-22 | 아키텍처 개선 (SectionWrapper, constants 분리, App useState 제거) + Projects 확장성 개선 (태그 필터링, 더보기 페이지네이션, 모바일 타임라인) |
+| v1.4.1 | 2026-04-28 | Codex 전용 규칙 문서 분리, AGENTS 연결 추가, Vite/TypeScript 빌드 산출물 추적 정리 |
 
 ---
 
